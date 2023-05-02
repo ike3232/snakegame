@@ -5,7 +5,7 @@ class SnakeGame {
     this.ctx = this.$canvas.getContext('2d');
     this.$startScreen = this.$app.querySelector('.start-screen');
     this.$score = this.$app.querySelector('.score');
-
+// Hiiiiii
     this.settings = {
       canvas: {
         width: window.innerWidth,
