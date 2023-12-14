@@ -26,9 +26,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: deploy Via SSH
-        uses: appleboy/ssh-action@master
+        uses:  actions/javascript-action@v1
         with:
-          host: ${{ secrets.HOST }}
+          host: ${{ secrets.SS_HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           script:  |
