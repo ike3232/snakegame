@@ -1,0 +1,47 @@
+name: test and build snak game
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+  
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy Via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          script:  |
+            cd snake-game
+            git pull origin main
+            cd
+            sudo cp -r snake-game/* /var/www/html
+            
+            
+
+
+
+
+      
+      
+        
